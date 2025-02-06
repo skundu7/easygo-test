@@ -8,6 +8,7 @@
             "src/tests/steps/*.ts",
             "src/hooks/*.ts"
         ],
+        "tags": "@api or @ui",  
         "formatOptions": {
             "snippetInterface": "async-await"
         },

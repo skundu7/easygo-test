@@ -84,7 +84,6 @@ When('User Add an item to the cart without Token', async () => {
     const apiContext = await request.newContext()
     const api = new apiUtils(apiContext)
     response = await api.createOrderWithoutToken(orderPayload)
-    console.log(" the order response is " + orderResponse)
 })
 
 Then('User should see {int} error', (int: number) => {

@@ -1,3 +1,4 @@
+@ui
 Feature: Verify user login and profile update
 
   Background:
