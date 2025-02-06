@@ -7,7 +7,7 @@ import apiUtils from '../../hooks/apiUtils';
 
 const { setDefaultTimeout } = require('@cucumber/cucumber');
 
-setDefaultTimeout(30 * 1000); // Sets a global timeout of 60 seconds [1, 2, 3]
+setDefaultTimeout(30 * 1000);
 
 
 Given('user registers for the application', async () => {
@@ -27,14 +27,6 @@ Given('User navigates to the application', async function () {
 Given('User click on the login link', async function () {
     await pageFixture.page.locator('xpath=//a[@data-test="nav-sign-in"]').click()
 });
-
-
-// Given('User enter the username as {string}', async function (name: string) {
-//     const apiContext = await request.newContext()
-//     const api = new apiUtils(apiContext)
-//     await pageFixture.page.getByPlaceholder("Your email").fill(api.getregisteredEmailAndPassword);
-// });
-
 
 
 Given('User enter the password as {string}', async function (pass: string) {
