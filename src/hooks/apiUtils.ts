@@ -41,12 +41,12 @@ class apiUtils {
                 'Content-Type': 'application/json'
             }
         })
-        expect(addToCartResponse.ok())
+        const status = addToCartResponse.status()
+         expect(status).toBe(200)
 
     }
 
     async createOrder(orderPayload) {
-
         const token = await this.getToken();
         const orderResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order', {
             data: orderPayload,
@@ -56,7 +56,12 @@ class apiUtils {
                 'Content-Type': 'application/json'
             }
         })
-        expect(orderResponse.ok())
+        const status = orderResponse.status()
+         expect(status).toBe(201)
+         const orderResponseJson = await orderResponse.json()
+         console.log("Order created response is "+JSON.stringify(orderResponseJson))
+         const orderId = orderResponseJson.orders[0];
+         return orderId;
 
     }
 
@@ -102,8 +107,9 @@ class apiUtils {
             }
         })
 
-        expect(orderDetails.ok())
-        const orderDetailsJson = await orderDetails.json()
+        const status = orderDetails.status()
+        expect(status).toBe(200)
+     
 
     }
 
