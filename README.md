@@ -1,10 +1,16 @@
 # easygo-test
 UI and API tests for easygo
 
+# Prerequisite
+git
+node.js
+
+
 # getting the project to local
 
 In terminal do :
 git clone https://github.com/skundu7/easygo-test.git 
+
 
 # Installation
 run the below command in terminal to install all the node-modules
