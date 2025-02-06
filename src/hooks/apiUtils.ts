@@ -5,7 +5,7 @@ class apiUtils {
     public email: string = "";
     public password: string = "";
     apiContext: any
-    private token:string;
+    private token: string;
 
     constructor(apiContext) {
         this.apiContext = apiContext
@@ -13,7 +13,7 @@ class apiUtils {
 
     async getToken() {
         if (this.token) {
-            return this.token; 
+            return this.token;
         }
 
         const loginPayload = {
@@ -32,7 +32,7 @@ class apiUtils {
 
     async addToCart(cartPayLoad) {
 
-        const token = await this.getToken();  
+        const token = await this.getToken();
         const addToCartResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/user/add-to-cart', {
             data: cartPayLoad,
             headers:
@@ -47,7 +47,7 @@ class apiUtils {
 
     async createOrder(orderPayload) {
 
-        const token = await this.getToken(); 
+        const token = await this.getToken();
         const orderResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order', {
             data: orderPayload,
             headers:
@@ -76,7 +76,7 @@ class apiUtils {
     }
 
     async addTocartInvalid(cartPayLoad) {
-        const token = await this.getToken(); 
+        const token = await this.getToken();
 
         const invlaidResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/user/add-to-car', {
             data: cartPayLoad,
@@ -89,11 +89,8 @@ class apiUtils {
         return invlaidResponse.status()
 
     }
-
-
-
     async getOrderDetails(orderNumber) {
-        const token = await this.getToken(); 
+        const token = await this.getToken();
         const orderDetails = await this.apiContext.get('https://rahulshettyacademy.com/api/ecom/order/get-orders-details', {
             params: {
                 'id': orderNumber
@@ -107,7 +104,7 @@ class apiUtils {
 
         expect(orderDetails.ok())
         const orderDetailsJson = await orderDetails.json()
-       
+
     }
 
     async registerNewUser() {
@@ -116,7 +113,6 @@ class apiUtils {
         this.password = await this.randomPassword();
 
         let userData = {
-
             first_name: "Sunil",
             last_name: "Kundu",
             dob: "1989-04-30",
@@ -134,7 +130,6 @@ class apiUtils {
             data: userData,
             headers:
             {
-
                 'Content-Type': 'application/json'
             }
         })
@@ -142,14 +137,10 @@ class apiUtils {
         expect(orderDetails.ok())
         const orderDetailsJson = await orderDetails.body()
         console.log("order details " + orderDetailsJson)
-
         let data = JSON.parse(orderDetailsJson)
         console.log(" Order details are " + data)
-
         this.email = userData.email;
         this.password = userData.password;
-
-
         console.log("The email is " + this.email)
         console.log("The password is " + userData.password)
 
@@ -157,9 +148,6 @@ class apiUtils {
     getUserDetails() {
         return { email: this.email, password: this.password };
     }
-
-
-
 
     async randomEmail() {
 
@@ -169,14 +157,10 @@ class apiUtils {
     }
 
     async randomPassword() {
-
         const number = Math.floor(Math.random() * 1001);
         const password = 'Apgge' + number + '$'
         return password
     }
-
-
-
 }
 export default (apiUtils)
 

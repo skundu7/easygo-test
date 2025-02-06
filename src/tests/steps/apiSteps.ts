@@ -2,9 +2,7 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import { expect, request } from "@playwright/test";
 import apiUtils from "../../hooks/apiUtils";
 
-let token;
 let orderNumber;
-let orderResponse;
 let response;
 
 const cartPayLoad = {
@@ -29,10 +27,7 @@ const cartPayLoad = {
 
 
 const nonExisitingProduct = {
-
-
     product: {
-    
         productName: "IPHONE 13 PRO",
         productCategory: "electronics",
         productSubCategory: "mobiles",
@@ -41,10 +36,7 @@ const nonExisitingProduct = {
     }
 }
 
-
-
 const orderPayload = {
-
     orders: [
         {
             country: "Australia",
@@ -58,7 +50,7 @@ const orderPayload = {
 Given('User gets the token for the requests', async () => {
     const apiContext = await request.newContext()
     const api = new apiUtils(apiContext)
-    token = await api.getToken()
+    await api.getToken()
 
 })
 
