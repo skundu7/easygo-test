@@ -1,0 +1,28 @@
+{
+    "default": {
+        "paths": [
+            "src/tests/features/apitest.feature",
+            "src/tests/features/login.feature"
+        ],
+        "require": [
+            "src/tests/steps/*.ts",
+            "src/hooks/*.ts"
+        ],
+        "formatOptions": {
+            "snippetInterface": "async-await"
+        },
+        "format": [
+            [
+                "html",
+                "cucumber-report.html"
+            ],
+            "summary",
+            "progress-bar",
+            "json:./cucumber-report.json"
+        ],
+        "requireModule":[
+            "ts-node/register"
+        ]
+    
+    }
+}
