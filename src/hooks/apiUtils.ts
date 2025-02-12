@@ -5,15 +5,15 @@ class apiUtils {
     public email: string = "";
     public password: string = "";
     apiContext: any
-    private token: string;
+    private static token: string;
 
     constructor(apiContext) {
         this.apiContext = apiContext
     }
 
     async getToken() {
-        if (this.token) {
-            return this.token;
+        if (apiUtils.token) {
+            return apiUtils.token
         }
 
         const loginPayload = {
@@ -26,8 +26,8 @@ class apiUtils {
         })
 
         const loginResponseJson = await apiresponse.json()
-        let token = loginResponseJson.token
-        return token
+        apiUtils.token = loginResponseJson.token
+        return apiUtils.token
     }
 
     async addToCart(cartPayLoad) {
@@ -143,8 +143,6 @@ class apiUtils {
         expect(orderDetails.ok())
         const orderDetailsJson = await orderDetails.body()
         console.log("order details " + orderDetailsJson)
-        let data = JSON.parse(orderDetailsJson)
-        console.log(" Order details are " + data)
         this.email = userData.email;
         this.password = userData.password;
         console.log("The email is " + this.email)
