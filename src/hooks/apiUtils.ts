@@ -1,4 +1,5 @@
 import { expect } from "@playwright/test"
+require('dotenv').config()
 
 class apiUtils {
 
@@ -17,11 +18,11 @@ class apiUtils {
         }
 
         const loginPayload = {
-            userEmail: "sunil30kundu89@gmail.com",
-            userPassword: "Testing1234!"
+            userEmail: process.env.USER1_EMAIL,
+            userPassword: process.env.USER1_PASS
         }
 
-        const apiresponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/auth/login', {
+        const apiresponse = await this.apiContext.post(process.env.API_BASE_URL+'/auth/login', {
             data: loginPayload
         })
 
@@ -33,7 +34,7 @@ class apiUtils {
     async addToCart(cartPayLoad) {
 
         const token = await this.getToken();
-        const addToCartResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/user/add-to-cart', {
+        const addToCartResponse = await this.apiContext.post(process.env.API_BASE_URL+'/user/add-to-cart', {
             data: cartPayLoad,
             headers:
             {
@@ -48,7 +49,7 @@ class apiUtils {
 
     async createOrder(orderPayload) {
         const token = await this.getToken();
-        const orderResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order', {
+        const orderResponse = await this.apiContext.post(process.env.API_BASE_URL+'/order/create-order', {
             data: orderPayload,
             headers:
             {
@@ -68,7 +69,7 @@ class apiUtils {
     async createOrderWithoutToken(orderPayload) {
 
 
-        const orderResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/order/create-order', {
+        const orderResponse = await this.apiContext.post(process.env.API_BASE_URL+'/order/create-order', {
             data: orderPayload,
             headers:
             {
@@ -83,7 +84,7 @@ class apiUtils {
     async addTocartInvalid(cartPayLoad) {
         const token = await this.getToken();
 
-        const invlaidResponse = await this.apiContext.post('https://rahulshettyacademy.com/api/ecom/user/add-to-car', {
+        const invlaidResponse = await this.apiContext.post(process.env.API_BASE_URL+'user/add-to-car', {
             data: cartPayLoad,
             headers:
             {
@@ -96,7 +97,7 @@ class apiUtils {
     }
     async getOrderDetails(orderNumber) {
         const token = await this.getToken();
-        const orderDetails = await this.apiContext.get('https://rahulshettyacademy.com/api/ecom/order/get-orders-details', {
+        const orderDetails = await this.apiContext.get(process.env.API_BASE_URL+'/order/get-orders-details', {
             params: {
                 'id': orderNumber
             },
@@ -132,7 +133,7 @@ class apiUtils {
             password: await this.password
 
         }
-        const orderDetails = await this.apiContext.post('https://api.practicesoftwaretesting.com/users/register', {
+        const orderDetails = await this.apiContext.post(process.env.UI_REGISTER_API, {
             data: userData,
             headers:
             {
@@ -155,13 +156,13 @@ class apiUtils {
 
     async randomEmail() {
 
-        const number = Math.floor(Math.random() * 1001);
+        const number = Math.floor(Math.random() * 10001);
         const email = 'sunil.kundu' + number + '@gmail.com'
         return email
     }
 
     async randomPassword() {
-        const number = Math.floor(Math.random() * 1001);
+        const number = Math.floor(Math.random() * 10001);
         const password = 'Apgge' + number + '$'
         return password
     }

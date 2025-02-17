@@ -8,7 +8,7 @@
             "src/tests/steps/*.ts",
             "src/hooks/*.ts"
         ],
-        "tags": "@api or @ui",  
+        "tags": "@api",
         "formatOptions": {
             "snippetInterface": "async-await"
         },
@@ -21,9 +21,10 @@
             "progress-bar",
             "json:./cucumber-report.json"
         ],
-        "requireModule":[
+        "requireModule": [
             "ts-node/register"
-        ]
-    
+        ],
+        "parallel": 1,
+        "baseUrl": "https://practicesoftwaretesting.com/"
     }
 }

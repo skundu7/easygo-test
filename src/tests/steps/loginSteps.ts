@@ -2,9 +2,18 @@ import { Given, When, Then } from '@cucumber/cucumber';
 import { pageFixture } from '../../hooks/pageFixture';
 import { expect, request } from '@playwright/test';
 import apiUtils from '../../hooks/apiUtils';
+import LoginPage from '../pages/loginPage';
+import HomePage from '../pages/homePage';
+import ProfilePage from '../pages/profilePage';
+require('dotenv').config()
 
 const { setDefaultTimeout } = require('@cucumber/cucumber');
 setDefaultTimeout(30 * 1000);
+
+const loginPage = new LoginPage()
+const homePage = new HomePage()
+const profilePage = new ProfilePage()
+const baseUrl = process.env.BASE_URL
 
 Given('user registers for the application', async () => {
     const apiContext = await request.newContext()
@@ -14,66 +23,48 @@ Given('user registers for the application', async () => {
 })
 
 Given('User navigates to the application', async function () {
-    await pageFixture.page.goto('https://practicesoftwaretesting.com/');
+    console.log(" the base url is "+baseUrl)
+    await pageFixture.page.goto(baseUrl);
 });
 
 Given('User click on the login link', async function () {
-    await pageFixture.page.locator('xpath=//a[@data-test="nav-sign-in"]').click()
+    await loginPage.clickOnSignInLink()
 });
 
-Given('User enter the password as {string}', async function (pass: string) {
-    const apiContext = await request.newContext()
-    const api = new apiUtils(apiContext)
-    await pageFixture.page.getByPlaceholder("Your password").fill(api.password);
-});
-
-When('User click on the login button', async function () {
-    await pageFixture.page.getByLabel('Login').filter({ hasText: 'Login' }).click()
-});
 
 Then('Login should be success', async function () {
     console.log("successful")
 });
 
 When('User click on the profile link', async function () {
-    await pageFixture.page.getByRole('button').filter({ hasText: 'Profile' }).click()
+    await homePage.clickOnProfileLink()
+
 });
 
-When('User update the last name', async function () {
-    await pageFixture.page.waitForLoadState('networkidle')
-    await pageFixture.page.locator('#last_name').fill('Updated')
-    await pageFixture.page.getByRole('button').filter({ hasText: 'Update Profile' }).click()
+When('User update the {string} field with {string} text', async function (s: string, text: string) {
+    await profilePage.updateField(s, text);
+
 });
 
-When('User Name should be updated', async function () {
-  const text =  await pageFixture.page.locator('#last_name').innerText()
-  console.log("last name is "+text)
-});
-
-When('User try to update the profile without First Name', async () => {
-    await pageFixture.page.waitForLoadState('networkidle')
-    await pageFixture.page.locator('#first_name').clear()
-    await pageFixture.page.getByRole('button').filter({ hasText: 'Update Profile' }).click()
+When('User try to update the profile without {string}', async (s: string) => {
+    await profilePage.clearField(s)
 })
 
 Then('User should get message {string}', async (s: string) => {
-    await expect(pageFixture.page.getByRole('alert').filter({ hasText: s })).toBeVisible()
+    await profilePage.verifySuccessMessage(s)
 })
 
-When('User try to update the profile without Last Name', async () => {
-    await pageFixture.page.waitForLoadState('networkidle')
-    await pageFixture.page.locator('#last_name').clear()
-    await pageFixture.page.getByRole('button').filter({ hasText: 'Update Profile' }).click()
-})
-
-When('User login to the application', async() => {
+When('User login to the application', async () => {
     const apiContext = await request.newContext();
     const api = new apiUtils(apiContext);
-    await api.registerNewUser();  
-    const { email } = api.getUserDetails(); 
+    await api.registerNewUser();
+    const { email } = api.getUserDetails();
     const { password } = api.getUserDetails();
-    await pageFixture.page.locator('#email').fill(email)
-    await pageFixture.page.locator('#password').fill(password)
+    await loginPage.UserLoginToApplication(email, password)
+})
+
+When('user update the profile', async () => {
+    await profilePage.clickOnUpdateButton()
 })
 
 

@@ -15,11 +15,11 @@
             "line": 5,
             "name": "User gets the token for the requests",
             "match": {
-              "location": "src/tests/steps/apiSteps.ts:58"
+              "location": "src/tests/steps/apiSteps.ts:49"
             },
             "result": {
               "status": "passed",
-              "duration": 1133717378
+              "duration": 1207294446
             }
           },
           {
@@ -28,11 +28,11 @@
             "line": 9,
             "name": "User Add an item to the cart",
             "match": {
-              "location": "src/tests/steps/apiSteps.ts:65"
+              "location": "src/tests/steps/apiSteps.ts:56"
             },
             "result": {
               "status": "passed",
-              "duration": 721143457
+              "duration": 383723656
             }
           },
           {
@@ -41,11 +41,11 @@
             "line": 10,
             "name": "I create the order",
             "match": {
-              "location": "src/tests/steps/apiSteps.ts:71"
+              "location": "src/tests/steps/apiSteps.ts:62"
             },
             "result": {
               "status": "passed",
-              "duration": 718077241
+              "duration": 418606893
             }
           },
           {
@@ -54,11 +54,11 @@
             "line": 11,
             "name": "I can see the order created successfully",
             "match": {
-              "location": "src/tests/steps/apiSteps.ts:77"
+              "location": "src/tests/steps/apiSteps.ts:68"
             },
             "result": {
               "status": "passed",
-              "duration": 721724094
+              "duration": 410288644
             }
           }
         ],
@@ -66,6 +66,116 @@
           {
             "name": "@api",
             "line": 7
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-api-tests-for-add-to-cart;verify-401---user-is-not-able-to-create-an-order-without-the-token",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Verify 401-  user is not able to create an order without the Token",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User gets the token for the requests",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4027996
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "User Add an item to the cart without Token",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:74"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 398623642
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "User should see 401 error",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6043039
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@api",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user-api-tests-for-add-to-cart;verify-404----user-is-not-able-to-add-to-the-cart-for-resource-not-existing--bad-url",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Verify 404 -  user is not able to add to the cart for resource not existing  bad url",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User gets the token for the requests",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:49"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2684419
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "User Add an item to the cart with invalid url",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:84"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 399386043
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "User should see 404 error",
+            "match": {
+              "location": "src/tests/steps/apiSteps.ts:80"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1126911
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@api",
+            "line": 18
           }
         ],
         "type": "scenario"
@@ -77,448 +187,5 @@
     "name": "User API tests for add to cart",
     "tags": [],
     "uri": "src/tests/features/apitest.feature"
-  },
-  {
-    "description": "",
-    "elements": [
-      {
-        "description": "",
-        "id": "verify-user-login-and-profile-update;login-should-be-success",
-        "keyword": "Scenario",
-        "line": 6,
-        "name": "Login should be success",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 2229851467
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "user registers for the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1739211242
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 7,
-            "name": "User navigates to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1149787237
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 8,
-            "name": "User click on the login link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 120909856
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 9,
-            "name": "User login to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:91"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1219662105
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 10,
-            "name": "User click on the login button",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 54462701
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 11,
-            "name": "Login should be success",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:52"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 393727
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "User click on the profile link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:57"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3158533527
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "User update the last name",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:63"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3266792774
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "User should get message \"Your profile is successfully Updated!\"",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:81"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1891160274
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 318482787
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "verify-user-login-and-profile-update;validate-first-name-is-mandatory-field",
-        "keyword": "Scenario",
-        "line": 17,
-        "name": "validate First Name is mandatory field",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1358942919
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "user registers for the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1306945950
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 18,
-            "name": "User navigates to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1113582021
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "User click on the login link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 285189358
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 20,
-            "name": "User login to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:91"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1248384573
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 21,
-            "name": "User click on the login button",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 53449325
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 22,
-            "name": "Login should be success",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:52"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 352620
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 23,
-            "name": "User click on the profile link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:57"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2352499865
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 24,
-            "name": "User try to update the profile without First Name",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:75"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2395865666
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 25,
-            "name": "User should get message \"The first name field is required. \"",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:81"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1873927257
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 249223807
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "verify-user-login-and-profile-update;validate-last-name-is-mandatory-field",
-        "keyword": "Scenario",
-        "line": 27,
-        "name": "validate last Name is mandatory field",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1680544429
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "user registers for the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:13"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1308696465
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "User navigates to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:21"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1111648471
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 29,
-            "name": "User click on the login link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 259829245
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 30,
-            "name": "User login to the application",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:91"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1228807974
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 31,
-            "name": "User click on the login button",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:46"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 66584497
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 32,
-            "name": "Login should be success",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:52"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 225102
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 33,
-            "name": "User click on the profile link",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:57"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2045402866
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 34,
-            "name": "User try to update the profile without Last Name",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:85"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2570764189
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 35,
-            "name": "User should get message \"The last name field is required. \"",
-            "match": {
-              "location": "src/tests/steps/loginSteps.ts:81"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1881826878
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 270439435
-            }
-          }
-        ],
-        "tags": [],
-        "type": "scenario"
-      }
-    ],
-    "id": "verify-user-login-and-profile-update",
-    "line": 1,
-    "keyword": "Feature",
-    "name": "Verify user login and profile update",
-    "tags": [],
-    "uri": "src/tests/features/login.feature"
   }
 ]

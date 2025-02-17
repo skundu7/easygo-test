@@ -10,9 +10,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.50.1",
     "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.1",
     "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
