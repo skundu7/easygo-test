@@ -1,50 +1,10 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect, request } from "@playwright/test";
 import apiUtils from "../../hooks/apiUtils";
+import { cartPayLoad, nonExisitingProduct, orderPayload } from "../../constants/constants";
 
 let orderNumber;
 let response;
-
-const cartPayLoad = {
-    _id: "67a45671e2b5443b1f49c04b",
-    product: {
-      _id: "676a6619e2b5443b1f004fff",
-      productName: "LG Refrigerator",
-      productCategory: "Fride",
-      productSubCategory: "Electronics",
-      productPrice: 25000,
-      productDescription: "Latest Design in 2024",
-      productImage: "https://rahulshettyacademy.com/api/ecom/uploads/productImage_1735026201323.png",
-      productRating: "0",
-      productTotalOrders: "0",
-      productStatus: true,
-      productFor: "family",
-      productAddedBy: "admin@gmail.com",
-      __v: 0
-    }
-  }
-
-
-const nonExisitingProduct = {
-    product: {
-        productName: "IPHONE 13 PRO",
-        productCategory: "electronics",
-        productSubCategory: "mobiles",
-        productPrice: 231500,
-    
-    }
-}
-
-const orderPayload = {
-    orders: [
-        {
-            country: "Australia",
-            productOrderedId: "676a6619e2b5443b1f004fff"
-        }
-    ]
-
-}
-
 
 Given('User gets the token for the requests', async () => {
     const apiContext = await request.newContext()
