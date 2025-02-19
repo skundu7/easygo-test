@@ -1,0 +1,22 @@
+stages:
+  - test
+
+variables:
+  NODE_ENV: test
+  PLAYWRIGHT_BROWSERS_PATH: 0 # Ensures Playwright installs browsers in CI
+
+before_script:
+  - apt-get update && apt-get install -y curl
+  - curl -fsSL https://deb.nodesource.com/setup_18.x | bash -
+  - apt-get install -y nodejs
+  - node -v
+  - npm -v
+  - npm ci  # Install dependencies
+  - npx playwright install --with-deps  # Install Playwright dependencies
+
+test:
+  stage: test
+  script:
+    - npm run test  # Runs Playwright Cucumber tests
+  only:
+    - main  # Run tests only on main branch (change as needed)
