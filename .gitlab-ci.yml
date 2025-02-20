@@ -19,4 +19,5 @@ test:
   script:
     - npm run test  # Runs Playwright Cucumber tests
   only:
+   refs:
     - main  # Run tests only on main branch (change as needed)
